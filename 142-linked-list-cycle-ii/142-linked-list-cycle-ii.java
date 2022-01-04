@@ -20,16 +20,18 @@ public class Solution {
             turtle=turtle.next;
             hare=hare.next.next;
             if(hare==turtle){
-                break;
-            }
-        }
-        if(hare==null||hare.next==null)return null;
-        hare=head;
+                //break;
+                hare=head;
         while(hare!=turtle){
             hare=hare.next;
             turtle=turtle.next;
         }
         return hare;
+            }
+        }
+        //f(hare==null||hare.next==null)return null;
+        return null;
+        
         
     }
 }
