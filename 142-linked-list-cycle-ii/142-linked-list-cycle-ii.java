@@ -11,27 +11,22 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        if(head==null|| head.next==null){
-            return null;
-        }
-        ListNode hare=head;
-        ListNode turtle=head;
-        while(hare!=null && hare.next!=null){
-            turtle=turtle.next;
-            hare=hare.next.next;
-            if(hare==turtle){
-                //break;
-                hare=head;
-        while(hare!=turtle){
-            hare=hare.next;
-            turtle=turtle.next;
-        }
-        return hare;
+        if(head==null)return null;
+    ListNode fast=head;
+        ListNode slow=head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                break;
             }
         }
-        //f(hare==null||hare.next==null)return null;
-        return null;
-        
-        
+        if(fast==null||fast.next==null)return null;
+        fast=head;
+        while(slow!=fast){
+            slow=slow.next;
+            fast=fast.next;
+        }
+        return slow;
     }
 }
