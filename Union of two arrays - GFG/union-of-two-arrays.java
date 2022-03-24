@@ -53,17 +53,16 @@ class Solution{
     public static int doUnion(int a[], int n, int b[], int m) 
     {
         //Your code here
-     Map<Integer,Integer>map= new TreeMap<>();
-         
-          //Inserting first array elements in map
-         for(int i=0; i<a.length; i++) {
-        	  map.put(a[i], map.getOrDefault(a[i],0)+1);
-         }
-         
-         //Inserting first array elements in map
-         for(int i=0; i<b.length; i++) {
-        	 map.put(b[i], map.getOrDefault(b[i],0)+1);
-         }
-         return map.size();
+     HashSet<Integer> set = new HashSet<>();
+    
+       for(int i=0;i<n;i++) {
+           set.add(a[i]);
+       }
+       
+       for(int i=0;i<m;i++) {
+           set.add(b[i]);
+       }
+       
+       return set.size();
     }
 }
