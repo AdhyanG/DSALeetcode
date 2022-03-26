@@ -38,9 +38,9 @@ class Solution{
         // Your code here
         int currsum=0;
         int maxsum=Integer.MIN_VALUE;
-        for(int i=0;i<arr.length;i++){
-            currsum +=arr[i];
-            if(currsum>maxsum){
+        for(int i=0;i<n;i++){
+            currsum=currsum+arr[i];
+            if(currsum>=maxsum){
                 maxsum=currsum;
             }
             if(currsum<0){
