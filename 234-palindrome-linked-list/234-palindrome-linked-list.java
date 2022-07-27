@@ -9,43 +9,33 @@
  * }
  */
 class Solution {
-    public boolean isPalindrome(ListNode head) {
-        ListNode mid=middlelist(head);
-        ListNode secondHead=reverseList(mid);
-        ListNode reverseHead=secondHead;
-        while(head!=null&&secondHead!=null){
-            if(head.val!=secondHead.val){
-                break;
-            }
-            head=head.next;
-            secondHead=secondHead.next;
-            
+    public ListNode reverse(ListNode head){
+        if(head==null)return null;
+        ListNode prev=null,curr=head,next=head.next;
+        while(curr!=null){
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+            if(next!=null)next=next.next;
         }
-        reverseList(reverseHead);
-        return (head==null||secondHead==null);
-        
+        return prev;
     }
-    public ListNode middlelist(ListNode head){
-        ListNode slow=head;
-        ListNode fast=head;
-        while(fast!=null&&fast.next!=null){
+    public boolean isPalindrome(ListNode head) {
+        //find node before mid so that we can have connection
+        ListNode slow=head,fast=head;
+        while(fast.next!=null&&fast.next.next!=null){
             slow=slow.next;
             fast=fast.next.next;
         }
-        return slow;
-    }
-    public ListNode reverseList(ListNode head){
-        ListNode prev=null;
-        ListNode present=head;
-        ListNode next=present.next;
-        while(present!=null){
-            present.next=prev;
-            prev=present;
-            present=next;
-            if(next!=null){
-                next=next.next;
-            }
+        slow.next=reverse(slow.next);
+        ListNode start=head;
+        ListNode mid=slow.next;
+        while(mid!=null){
+            if(mid.val!=start.val)return false;
+            start=start.next;
+            mid=mid.next;
+            
         }
-        return prev;
+        return true;
     }
 }
