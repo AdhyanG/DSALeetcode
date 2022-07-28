@@ -1,10 +1,20 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        char[] ch=s.toCharArray();
-        Arrays.sort(ch);
-        char[] ch1=t.toCharArray();
+        if(s.length()!=t.length())return false;
+        char[] ch1=s.toCharArray();
+        char[] ch2=t.toCharArray();
         Arrays.sort(ch1);
-        return new String(ch).equals(new String(ch1));
+        Arrays.sort(ch2);
+        int i=0;
+       int j=0;
+        while(i<ch1.length&&j<ch2.length){
+            if(ch1[i]!=ch2[j])return false;
+            else{
+                i++;
+                j++;
+            }
+        }
+        return true;
         
     }
 }
