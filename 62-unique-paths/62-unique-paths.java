@@ -14,12 +14,12 @@ class Solution {
 //         }
 //     }
     //simply compute ncr in this question to get combination
-            int N = n + m - 2;
-            int r = m - 1; 
-            double res = 1;
-            
-            for (int i = 1; i <= r; i++)
-                res = res * (N - r + i) / i;
-            return (int)res;
+    int R=n+m-2;
+       int v=m-1;
+   double result=1;
+       for(int i=1;i<=v;i++){
+           result=result*(R-v+i)/i;
+       }
+       return (int)result;
    }
 }
